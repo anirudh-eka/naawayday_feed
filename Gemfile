@@ -37,6 +37,9 @@ group :test do
 	gem 'shoulda-matchers'
 end
 
+gem 'twitter'
+gem 'dotenv-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
