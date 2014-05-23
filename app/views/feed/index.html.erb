@@ -3,5 +3,8 @@
 <% @tweets.each do |tweet| %>
 <ul>
   <li><%= tweet.text %></li>
+  <li>@<%= tweet.screen_name %></li>
+  <li><%= tweet.created_at %></li>
+  <li><img src=<%= tweet.profile_image_url %> /></li>
 </ul>
 <% end %>
