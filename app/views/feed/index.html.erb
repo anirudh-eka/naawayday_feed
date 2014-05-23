@@ -1,1 +1,7 @@
 <h1>Twitter Feed for #NAAwayDay</h1>
+
+<% @tweets.each do |tweet| %>
+<ul>
+  <li><%= tweet.text %></li>
+</ul>
+<% end %>

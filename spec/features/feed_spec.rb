@@ -7,8 +7,10 @@ describe 'home' do
 	end
 
   it 'should display single tweet' do
+
     visit '/'
-    page.should have_content('Get Ready #NAAwayDay')
+
+    page.should have_content('Thee Namaste Nerdz. #NAAwayDay')
   end
 end
 
