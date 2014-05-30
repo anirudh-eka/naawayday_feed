@@ -47,6 +47,7 @@ RSpec.configure do |config|
   config.before(:each) do 
     auth_response = {"access_token"=>"AAAAAAAAAAAAAAAAAAAAAHfMXgAAAAAAqjpb4OtAUv4B1pjCzS7nZ%2FTzgqo%3D473OZ91sDRgjEGKlEnCl9NSnfkNSs524yvxFjPrAAX6lQsuHUV",
      "token_type"=>"bearer"}.to_json
+     
     stub_request(:post, /https:\/\/\w+:\w+@api.twitter.com\/oauth2\/token/).
       with(headers: {"content-type"=>"application/x-www-form-urlencoded;charset=UTF-8"},
         body: {"grant_type"=>"client_credentials"}).
@@ -55,6 +56,7 @@ RSpec.configure do |config|
 
     stub_request(:get, 'https://api.twitter.com/1.1/search/tweets.json?q=%23NAAwayDay').
       with(headers: {"Authorization"=>/Bearer .+/}).
-      to_return(:status => 200, :body => @@tweet_response.to_json, :headers => {'content-type' => 'application/json'})
+      to_return( {:status => 200, :body => @@tweet_response.to_json, :headers => {'content-type' => 'application/json'} },
+        {:status => 200, :body => @@second_tweet_response.to_json, :headers => {'content-type' => 'application/json'} })
   end
 end

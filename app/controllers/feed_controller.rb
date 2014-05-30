@@ -20,6 +20,12 @@ class FeedController < ApplicationController
     # end
 
     @tweets = TweetService.get_tweets_by_hashtag "NAAwayDay"
+    puts "*" * 80
+    p @tweets
+    respond_to do |format|
+        format.html { render "index"}
+        format.json { render :json => @tweets }
+    end
 
 	end
 
