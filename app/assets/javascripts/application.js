@@ -29,7 +29,7 @@ $(document).on("ready", function(){
         $("#container").empty();
         for (var i = 0; i < data.length; i++){
           var obj = data[i];
-          var tweet = new Tweet(obj.text, obj.screen_name, obj.created_at, obj.profile_image_url, obj.media_url);
+          var tweet = new Tweet(obj.text, obj.screen_name, obj.created_at_formatted, obj.profile_image_url, obj.media_url);
           render(tweet);
         }
         var msnry = new Masonry("#container");          
@@ -67,6 +67,4 @@ function render(tweet) {
 
   tweetContainer.append("<section class='tweet-created-at'></section>");
   tweetContainer.find(".tweet-created-at").text(tweet.created_at);
-
-  console.log("help");
 }

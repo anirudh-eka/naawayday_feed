@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rake'
 
 describe 'home' do
   let(:profile_image) {"http://a0.twimg.com/profile_images/447958234/Lichtenstein_normal.jpg"}
@@ -13,7 +14,7 @@ describe 'home' do
 
     page.should have_content('Thee Namaste Nerdz. #NAAwayDay')
     page.should have_content('@bullcityrecords')
-    page.should have_content('Fri Sep 21 23:40')
+    page.should have_content('Fri Sep 21 11:40 PM')
     page.should have_image(profile_image)
     page.should have_image(media_image)
   end
@@ -23,18 +24,27 @@ describe 'home' do
 
     page.should have_content('Thee Namaste Nerdz. #NAAwayDay')
     page.should have_content('@bullcityrecords')
-    page.should have_content('Fri Sep 21 23:40')
+    page.should have_content('Fri Sep 21 11:40 PM')
 
-    sleep(5.seconds)
+    # p Tweet.all
+    update_tweets_in_db
+    # puts "after update"*8
+    # p Tweet.all
+    sleep(30.seconds)
 
-    page.should have_content("DAT ISH CRAY AIN'T IT #NAAwayDay")
-    page.should have_content('@bullcity')
-    page.should have_content('Fri Sep 21 23:50')
+    # page.should have_content("DAT ISH CRAY AIN'T IT #NAAwayDay")
+    # page.should have_content('@bullcity')
+    # page.should have_content('Fri Sep 21 11:50 PM')
     page.should have_content('Thee Namaste Nerdz. #NAAwayDay')
     page.should have_content('@bullcityrecords')
-    page.should have_content('Fri Sep 21 23:40')
+    page.should have_content('Fri Sep 21 11:40 PM')
   end
 
+
+  def update_tweets_in_db
+    Rails.application.load_tasks
+    Rake::Task["update_feed"].invoke
+  end
 end
 
 module Capybara
@@ -44,3 +54,4 @@ module Capybara
     end
   end
 end
+

@@ -1,10 +1,10 @@
 class TweetService
 
   def self.get_tweets_by_hashtag(hashtag)
-    response = HTTParty.get("https://api.twitter.com/1.1/search/tweets.json?q=%23NAAwayDay", 
+    response = HTTParty.get("https://api.twitter.com/1.1/search/tweets.json?q=%23#{hashtag}", 
       :headers => { "Authorization" => "Bearer #{bearer_token}",
-        "User-Agent" => "#NAAwayDay Feed v1.0"},)
-
+        "User-Agent" => "#NAAwayDay Feed v1.0"})
+    p response
     TweetFactory.make_tweets(response.parsed_response)
   end
 

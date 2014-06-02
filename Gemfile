@@ -5,7 +5,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -29,7 +30,7 @@ gem 'spring',        group: :development
 
 group :test do
   gem 'rspec-rails', '~> 2.0' 
-	gem 'shoulda-matchers'
+  gem 'shoulda-matchers'
   gem 'webmock'
   gem 'capybara'
   gem 'selenium-webdriver'
@@ -38,6 +39,7 @@ end
 gem 'twitter'
 gem 'dotenv-rails'
 gem 'httparty'
+gem 'whenever', :require => false
 
 # gem 'whenever', :require => false
 

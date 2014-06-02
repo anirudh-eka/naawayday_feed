@@ -6,6 +6,8 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'webmock/rspec'
 
+# require File.expand_path('../config/application', __FILE__)
+
 WebMock.disable_net_connect!(allow_localhost: true)  # WebMock.disable_net_connect!({:allow_localhost => true}) 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -51,7 +53,7 @@ RSpec.configure do |config|
     stub_request(:post, /https:\/\/\w+:\w+@api.twitter.com\/oauth2\/token/).
       with(headers: {"content-type"=>"application/x-www-form-urlencoded;charset=UTF-8"},
         body: {"grant_type"=>"client_credentials"}).
-      to_return(status: 200, body: auth_response, headers: {'content-type' => 'application/json'}) 
+      to_return({status: 200, body: auth_response, headers: {'content-type' => 'application/json'} }) 
 
 
     stub_request(:get, 'https://api.twitter.com/1.1/search/tweets.json?q=%23NAAwayDay').

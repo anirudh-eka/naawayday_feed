@@ -1,28 +1,19 @@
 class FeedController < ApplicationController
 
 	def index
-    # authorization_key = Base64.encode64(ENV["TWITTER_BEARER_CREDENTIALS"]).sub("\n","")
-    # resp = HTTParty.post('https://api.twitter.com/oauth2/token',
-    #   :headers => { "Authorization" => "Basic #{authorization_key}",
-    #     "User-Agent" => "#NAAwayDay Feed v1.0",
-    #     "Content-Type" => "application/x-www-form-urlencoded;charset=UTF-8"},
-    #   body: { "grant_type" => "client_credentials"}
-    #   )
-    # bearer = resp.parsed_response["access_token"]
-
-    # resp = HTTParty.get("https://api.twitter.com/1.1/search/tweets.json?q=%23happy", 
-    #   :headers => { "Authorization" => "Bearer #{bearer}",
-    #     "User-Agent" => "#NAAwayDay Feed v1.0"},)
-
-    # p resp
-    # resp["statuses"].each do |tweet|
-      # p tweet["text"]
-    # end
-    @tweets = TweetService.get_tweets_by_hashtag "NAAwayDay"
-
     respond_to do |format|
-      format.html { render "index"}
-      format.json { render :json => @tweets }
+      format.html do 
+        TweetService.get_tweets_by_hashtag "NAAwayDay"
+        @tweets = Tweet.order(created_at: :desc)
+        render "index"
+      end
+
+      format.json do 
+        p "json" * 40
+        p Tweet.all
+        @tweets = Tweet.order(created_at: :desc)
+        render :json => @tweets
+      end
     end
 
   end

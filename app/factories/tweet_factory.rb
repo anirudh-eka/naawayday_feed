@@ -1,7 +1,6 @@
 class TweetFactory
 
   def self.make_tweets(parsed_response)
-    tweets = []
     parsed_response["statuses"].each do |tweet|
       
       text = tweet["text"]
@@ -12,15 +11,23 @@ class TweetFactory
       media = tweet["entities"]["media"]
       media_url = (media ? media[0]["media_url_https"] : nil)
 
-      tweets << Tweet.new(
-        text: text,
-        screen_name: screen_name,
-        created_at: created_at,
-        profile_image_url: profile_image_url,
-        media_url: media_url
-      )
+      begin
+        Tweet.create!(
+          text: text,
+          screen_name: screen_name,
+          created_at: created_at,
+          profile_image_url: profile_image_url,
+          media_url: media_url
+        )
+      rescue 
+        puts "*" * 80
+        p "I'm having issues!"
+      end
+
     end
-    tweets
+    p "Factory" * 30
+    p Tweet.all
+    
   end
 
 end
