@@ -39,8 +39,9 @@ end
 gem 'twitter'
 gem 'dotenv-rails'
 gem 'httparty'
-gem 'whenever', :require => false
+# gem 'whenever', :require => false
 
+ruby "2.1.1"
 # gem 'whenever', :require => false
 
 # Use ActiveModel has_secure_password
