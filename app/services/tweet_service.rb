@@ -12,7 +12,7 @@ class TweetService
 
   def self.bearer_token
     authorization_key = Base64.encode64(ENV["TWITTER_BEARER_CREDENTIALS"]).gsub("\n","")
-
+    
     resp = HTTParty.post('https://api.twitter.com/oauth2/token',
       :headers => { 
         "Authorization" => "Basic #{authorization_key}",
