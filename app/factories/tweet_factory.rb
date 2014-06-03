@@ -26,7 +26,7 @@ class TweetFactory
 
     end
     p "Factory" * 30
-    p Tweet.all
+    p Tweet.order(created_at: :desc).first
     
   end
 
