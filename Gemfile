@@ -39,7 +39,10 @@ end
 gem 'twitter'
 gem 'dotenv-rails'
 gem 'httparty'
-# gem 'whenever', :require => false
+
+group :production do
+  gem 'rails_12factor'
+end
 
 ruby "2.1.1"
 # gem 'whenever', :require => false
