@@ -10,7 +10,7 @@ class FeedController < ApplicationController
 
       format.json do 
         p "json" * 40
-        p Tweet.all
+        p Tweet.order(created_at: :desc).first
         @tweets = Tweet.order(created_at: :desc)
         render :json => @tweets
       end
