@@ -1,3 +1,6 @@
+# require 'application_wide_setting'
+# Rails.application.eager_load!
+
 desc "This task is called by the Heroku scheduler add-on"
 task :update_feed => :environment do
   puts "Updating feed..."
