@@ -14,7 +14,7 @@ describe 'home' do
 
     page.should have_content('Thee Namaste Nerdz. #NAAwayDay')
     page.should have_content('@bullcityrecords')
-    page.should have_content('Fri Sep 21 11:40 PM')
+    page.should have_content('Fri Sep 21 7:40 PM')
     page.should have_image(profile_image)
     page.should have_image(media_image)
   end
@@ -24,7 +24,7 @@ describe 'home' do
 
     page.should have_content('Thee Namaste Nerdz. #NAAwayDay')
     page.should have_content('@bullcityrecords')
-    page.should have_content('Fri Sep 21 11:40 PM')
+    page.should have_content('Fri Sep 21 7:40 PM')
 
     # p Tweet.all
     update_tweets_in_db
@@ -34,10 +34,10 @@ describe 'home' do
 
     # page.should have_content("DAT ISH CRAY AIN'T IT #NAAwayDay")
     # page.should have_content('@bullcity')
-    # page.should have_content('Fri Sep 21 11:50 PM')
+    # page.should have_content('Fri Sep 21 7:50 PM')
     page.should have_content('Thee Namaste Nerdz. #NAAwayDay')
     page.should have_content('@bullcityrecords')
-    page.should have_content('Fri Sep 21 11:40 PM')
+    page.should have_content('Fri Sep 21 7:40 PM')
   end
 
 
