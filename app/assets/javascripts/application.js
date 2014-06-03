@@ -23,16 +23,20 @@ $(document).on("ready", function(){
       type: "GET",
       url: "/",
       contentType: "application/json; charset=utf-8",
+      ifModified: true,
       dataType: "json",
-      success: function(data){
+      success: function(data, status){
         console.log(data);
-        $("#container").empty();
-        for (var i = 0; i < data.length; i++){
-          var obj = data[i];
-          var tweet = new Tweet(obj.text, obj.screen_name, obj.created_at_formatted, obj.profile_image_url, obj.media_url);
-          render(tweet);
-        }
-        var msnry = new Masonry("#container");          
+        console.log(status);
+        if(status != "notmodified") {
+          $("#container").empty();
+          for (var i = 0; i < data.length; i++){
+            var obj = data[i];
+            var tweet = new Tweet(obj.text, obj.screen_name, obj.created_at_formatted, obj.profile_image_url, obj.media_url);
+            render(tweet);
+          }
+          var msnry = new Masonry("#container");
+        }          
       }
     });
   }, 5000);
