@@ -6,7 +6,7 @@ describe 'home' do
   let(:media_image) {"https://pbs.twimg.com/media/BoqqU1wIMAAr_zO.jpg"}
 	it 'should display title' do
 		visit '/'
-		page.should have_content('Twitter Feed for #NAAwayDay')
+		page.should have_content('#NAAwayDay')
 	end
 
   it 'should display single tweets details' do
