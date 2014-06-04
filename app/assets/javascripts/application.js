@@ -30,16 +30,19 @@ $(document).on("ready", function(){
         console.log(status);
         if(status != "notmodified") {
           $("#container").empty();
+          var bgColor = 0;
           for (var i = 0; i < data.length; i++){
+            bgColor += 1;
             var obj = data[i];
             var tweet = new Tweet(obj.text, obj.screen_name, obj.created_at_formatted, obj.profile_image_url, obj.media_url);
-            render(tweet);
+            render(tweet).addClass("background-color-"+bgColor);
+            if(bgColor == 4) { bgColor = 0 }
           }
           var msnry = new Masonry("#container");
         }          
       }
     });
-  }, 5000);
+  }, 60000);
 
 });
 
@@ -71,4 +74,5 @@ function render(tweet) {
 
   tweetContainer.append("<section class='tweet-created-at'></section>");
   tweetContainer.find(".tweet-created-at").text(tweet.created_at);
+  return tweetContainer;
 }
